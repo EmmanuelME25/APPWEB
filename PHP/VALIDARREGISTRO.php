@@ -16,7 +16,7 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
     $conn = new mysqli($host, $usDb, $passDb, $dbName);
     
     if(mysqli_connect_error()){
-        die('Connect Error('mysqli_connect_errno().')'.mysqli_connect_error());
+        die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
     } else {
         $Hash=password_hash($Contrasena, PASSWORD_ARGON2I);
         $newID = random_str(10);
