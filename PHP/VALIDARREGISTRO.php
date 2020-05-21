@@ -18,9 +18,8 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
     if(mysqli_connect_error()){
         die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
     } else {
-        $Hash=password_hash($Contrasena, PASSWORD_ARGON2I);
         $newID = random_str(10);
-        $SELID= "SELECT ID_U From usuarios Where ID_U=? Limit 1"
+        $SELID= "SELECT ID_U From usuarios Where ID_U=? Limit 1";
         
         while(1){
             $stmt = $conn->prepare($SELID);
@@ -38,8 +37,10 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
             
         }
         
-        $SELMAI = "SELECT CORREO From usuarios Where CORREO=? Limit 1"
-        $INSERT = "INSERT into usuarios (ID_U, NOMBRE, APELLIDO1, APELLIDO2, CORREO, TELEFONO, PASSHASH, NUMPRESTAS, CALIFUSER) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $Hash=password_hash($Contrasena, PASSWORD_DEFAULT);
+        
+        $SELMAI = "SELECT CORREO From usuarios Where CORREO=? Limit 1";
+        $INSERT = "INSERT into usuarios (ID_U, NOMBRE, APELLIDO1, APELLIDO2, CORREO, TELEFONO, PASSHASH) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($SELMAI);
         $stmt->bind_param("s",$Corr);
@@ -48,9 +49,9 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
         $stmt->store_result();
         $rnum = $stmt->num_rows;
         
-        if($rum==0){
+        if($rnum==0){
             $stmt = $conn->prepare($INSERT);
-            $stmt->bind_param("sssssssss", $newID, $Nombre, $Papellido, $Sapellido, $Corr, $Numero, $Hash, 0,0);
+            $stmt->bind_param("sssssss", $newID, $Nombre, $Papellido, $Sapellido, $Corr, $Numero, $Hash);
             $stmt->execute();
             echo "Felicidades! Has creado tu cuenta!";
         } else {
