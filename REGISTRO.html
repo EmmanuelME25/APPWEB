@@ -1,0 +1,116 @@
+<html>
+<head>
+
+<title> Registro de usuario </title>
+
+<link rel="stylesheet" type="text/css" href="CSS/REGISTROCSS.css" media="screen"/>
+
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.button2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.button4 {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button4:hover {background-color: #e7e7e7;}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}</style>
+<script>
+	function validateForm(){
+		var x = document.forms["formR"]["contrasena"].value;
+		var y = document.forms["formR"]["confirmarcontrasena"].value;
+		if (x!=y){
+			alert("Las contraseñas mo coinciden");
+			return false;
+			}
+			
+			}
+	</script>
+
+</head>
+
+<body bgcolor=#BDDBD6>
+
+
+
+<form name="formR" action ="PHP/VALIDARREGISTRO.php" method="POST" onsubmit="return validateForm()">
+<center>
+Nombre <br>
+<input type="text" name="nombre" required="required" placeholder="NOMBRE"><br><br><br>
+
+Apellido 1 <input type="text" name="apellido1" required="required" placeholder="Apellido 1"> Apellido 2 <input type="text" name="apellido2" placeholder="Apellido 2"><br><br><br>
+
+Correo <input type="email" name="correo" required="required" placeholder="Correo electrónico"> <br><br> Teléfono <input type="text" name="telefono" required="required" placeholder="Numero de teléfono"><br><br><br>
+
+Contraseña <br>
+<input type="password" name="contrasena" required="required" placeholder="Contraseña"><br><br><br>
+
+Confirmar contraseña<br>
+<input type="password" name="confirmarcontrasena" required="required" placeholder="Confirmar"><br><br><br>
+
+<input type="submit" value="Registrar" class=button3><br>
+<br>
+<a href="INDEX.html" target="_self"> ¿Ya tienes un usuario?
+</a>
+</center>
+</form>
+
+
+</body>
+</html>
