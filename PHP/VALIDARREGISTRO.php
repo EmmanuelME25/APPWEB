@@ -1,5 +1,9 @@
 <?php
 include 'RandomStr.php';
+echo "<head>";
+echo "<link rel='stylesheet' type='text/css' href='../CSS/REGISTROCSS.css' media='screen'/>";
+echo "<meta charset='UTF-8'>";
+echo "</head>";
 $Nombre = $_POST["nombre"];
 $Papellido = $_POST["apellido1"];
 $Sapellido = $_POST["apellido2"];
@@ -53,9 +57,15 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
             $stmt = $conn->prepare($INSERT);
             $stmt->bind_param("sssssss", $newID, $Nombre, $Papellido, $Sapellido, $Corr, $Numero, $Hash);
             $stmt->execute();
-            echo "Felicidades! Has creado tu cuenta!";
+            echo '<script type="text/javascript">'; 
+            echo 'alert("¡Felicidades! Tu cuenta se ha registrado exitosamente");'; 
+            echo 'window.location.href = "../PRINCIPAL.html";';
+            echo '</script>';
         } else {
-            echo "Este correo electrónico ya se encuentra registrado. Prueba ingresar una dirección nueva";
+            echo '<script type="text/javascript">'; 
+            echo 'alert("Este correo ya se encuentra registrado. Intentalo de nuevo con una dirección distinta.");'; 
+            echo 'window.location.href = "../REGISTRO.html";';
+            echo '</script>';
         }
         $stmt->close();
     }
