@@ -1,0 +1,31 @@
+form{
+			background-color: white;
+			border-radius: 3px;
+			color: black;
+			font-size: 1em;
+			padding: 20px;
+			margin: 0 auto;
+			width: 300px;
+			margin-top: 150px;
+			box-shadow: 10px 15px 40px #000;
+		}
+
+		input, textarea{
+			border: 0;
+			width: 280px;
+		}
+
+		.field{
+			border: solid 1px #000000;
+			padding: 10px;
+
+			
+		}
+
+		.field:focus{
+			border-color: #000000;
+		}
+
+		.center-content{
+			text-align: center;
+		}
