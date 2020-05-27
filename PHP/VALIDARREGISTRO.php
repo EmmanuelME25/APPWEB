@@ -11,7 +11,7 @@ $Corr = $_POST["correo"];
 $Contrasena = $_POST["contrasena"];
 $Numero = $_POST["telefono"];
 
-if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) || !empty($Contrasena) || !empty($Numero)){
+if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) || !empty($Contrasena)){
     $host = "localhost";
     $usDb = "root";
     $passDb = "";
