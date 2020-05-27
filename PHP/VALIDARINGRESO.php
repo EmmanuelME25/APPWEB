@@ -14,16 +14,17 @@ if(mysqli_connect_error()){
 $Mail = $_POST["correo"];
 $Contrasena = $_POST["contrasena"];
 
-$Hash=password_hash($Contrasena, PASSWORD_DEFAULT);
-
-$query = mysqli_query($conn,"SELECT * FROM usuarios WHERE CORREO = '".$Mail."' and PASSHASH = '".$Hash."'");
+$query = mysqli_query($conn,"SELECT * FROM usuarios WHERE CORREO = '".$Mail."'");
 $nr = mysqli_num_rows($query);
 
 if($nr == 1){
-    $_SESSION['user_id'] = "SELECT ID_U FROM usuarios WHERE CORREO = '".$Mail."'";
-    header("Location: ../PRINCIPAL.html");
-} else {
-    header("Location: ../index.html");
+    $Hash = "SELECT PASSHASH FROM usuarios WHERE CORREO = '".$Mail."'";
+    if(password_verify($Contrasena, $Hash){
+        $_SESSION['user_id'] = "SELECT ID_U FROM usuarios WHERE CORREO = '".$Mail."'";
+        header("Location: ../PRINCIPAL.html");
+    }
 }
+
+header("Location: ../index.html");
 
 ?>
