@@ -1,32 +1,80 @@
-form{
-			background-color: white;
-			border-radius: 3px;
-			color: black;
-			font-size: 1em;
-			padding: 20px;
-			margin: 0 auto;
-			width: 300px;
-			margin-top: 150px;
-			box-shadow: 10px 15px 20px #000;
-		}
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #f1e7cd;
+  background-size: cover;
+  font-family: sanserif;
+  height: 100vh;
+}
 
-		input, textarea{
-			border: 0;
-			width: 300px;
-			height: 25px;
-		}
+.iniciosesion{
+  width: 320px;
+  height: 420px;
+  background: #545454;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+.iniciosesion .logoprinc{
+	width: 150px;
+  height: 150px;
+  position: absolute;
+  top: -80px;
+  left: calc(50% - 80px);
+}
+.iniciosesion h1{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 20px;
+}
+.iniciosesion label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+.iniciosesion input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.iniciosesion input[type="email"], .iniciosesion input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
 
-		.field{
-			border: solid 1px #000000;
-			padding: 10px;
+.iniciosesion input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #cbb57d;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 60px;
+}
 
-			
-		}
+.iniciosesion input[type="submit"]:hover {
+  cursor: pointer;
+  background: #cbb57d;
+  color: #000;
+}
 
-		.field:focus{
-			border-color: #000000;
-		}
+.iniciosesion a {
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: darkgrey;
+}
 
-		.center-content{
-			text-align: center;
-		}
+.iniciosesion a:hover {
+  color: #cbb57d;
+}
