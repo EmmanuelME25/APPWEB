@@ -6,72 +6,7 @@
 <link rel="stylesheet" type="text/css" href="CSS/REGISTROCSS.css" media="screen"/>
 <meta charset="UTF-8">
 
-<style>
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
 
-.button1 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.button1:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.button2 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #008CBA;
-}
-
-.button2:hover {
-  background-color: #008CBA;
-  color: white;
-}
-
-.button3 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #32628C;
-}
-
-.button3:hover {
-  background-color: #32628C;
-  color: white;
-}
-
-.button4 {
-  background-color: white;
-  color: black;
-  border: 2px solid #e7e7e7;
-}
-
-.button4:hover {background-color: #e7e7e7;}
-
-.button5 {
-  background-color: white;
-  color: black;
-  border: 2px solid #555555;
-}
-
-.button5:hover {
-  background-color: #555555;
-  color: white;
-}</style>
 <script>
 	function validateForm(){
 		var x = document.forms["formR"]["contrasena"].value;
@@ -88,30 +23,28 @@
 
 <body bgcolor=#659FB6>
 
-
-
+<div class="registro">
+    <h1>Registrate aquí</h1>
 <form name="formR" action ="PHP/VALIDARREGISTRO.php" method="POST" onsubmit="return validateForm()">
-<center>
-Nombre <br>
-<input type="text" name="nombre" required="required" placeholder="Nombre"><br><br><br>
+ <label for="nombre">Nombre</label>
+<input type="text" name="nombre" required="required" placeholder="Ingrese su nombre">
+ <label for="apellido1">Apellido 1</label>
+<input type="text" name="apellido1" required="required" placeholder="Ingrese su primer apellido"> 
+ <label for="apellido2">Apellido 2</label>
+<input type="text" name="apellido2" placeholder="Ingrese su segundo apellido">
+ <label for="correo">Correo</label> 
+<input type="email" name="correo" required="required" placeholder="Ingrese su correo electrónico">
+ <label for="telefono">Telefono</label> 
+<input type="text" name="telefono" required="required" placeholder="Ingrese su número de teléfono">
+ <label for="contraseña">Constraseña</label>
+<input type="password" name="contrasena" required="required" placeholder="Ingrese se contraseña">
+ <label for="ccontraseña">Confirmar contraseña</label>
+<input type="password" name="confirmarcontrasena" required="required" placeholder="Confirme su contraseña">
 
-Apellido 1 <input type="text" name="apellido1" required="required" placeholder="Apellido 1"> Apellido 2 <input type="text" name="apellido2" placeholder="Apellido 2"><br><br><br>
+<input type="submit" value="Registrarse" class=button3>
 
-Correo <input type="email" name="correo" required="required" placeholder="Correo electrónico"> <br><br> Teléfono <input type="text" name="telefono" required="required" placeholder="Numero de teléfono"><br><br><br>
-
-Contraseña <br>
-<input type="password" name="contrasena" required="required" placeholder="Contraseña"><br><br><br>
-
-Confirmar contraseña<br>
-<input type="password" name="confirmarcontrasena" required="required" placeholder="Confirmar"><br><br><br>
-
-<input type="submit" value="Registrar" class=button3><br>
-<br>
-<a href="index.html" target="_self"> ¿Ya tienes un usuario?
-</a>
-</center>
+<a href="index.html" target="_self"> ¿Ya tienes un usuario?</a>
+</div>
 </form>
-
-
 </body>
 </html>
