@@ -1,48 +1,32 @@
 <html>
 <head>
 
-<title> </title>
+<title>Registro de libro</title>
 <link rel="stylesheet" type="text/css" href="MENUCSS/REGISTROLIBROCSS.css" media="screen"/>
-<style>
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-.button3:hover {
-  background-color: #f44336;
-  color: white;
-}
 
-</style>
 
 <head>
+
+<div class="regislibro">
 <body bgcolor=#D5F8CD>
+<img src="IMAGENES_MENU/registro.png" class="registro" alt="Imagen_registro">
+
+<h1>Registro de libro</h1>
 
 <form method="POST" target="MENUPHP/VALIDARREGISTROLIBRO.PHP">
-<font size=3&gt face="Verdana,Arial,Comic Sans MS">
 
-<center><b>Registro de libro</b></center> <br><br>
 <hr color=000000><br>
 Título:<br>
-<input type="text" name="titulo" required="required" placeholder="Titulo del libro"><br><br><br>
+<input type="text" name="titulo" required="required" placeholder="Titulo del libro">
 
 Autor:<br>
-<input type="text" name="autor" required="required" placeholder="Nombre del autor"><br><br><br>
+<input type="text" name="autor" required="required" placeholder="Nombre del autor">
 
 Editorial:<br>
-<input type="text" name="editorial" required="required" placeholder="Editorial"><br><br><br>
+<input type="text" name="editorial" required="required" placeholder="Editorial">
 
 Edicion:<br>
-<input type="text" name="edicion" required="required" placeholder="Edicion"><br><br><br>
+<input type="text" name="edicion" required="required" placeholder="Edicion">
 
 Estado:<br>
 <select name="estado">
@@ -53,8 +37,8 @@ Estado:<br>
 <br><br>
 <input type="submit" value="Registrar" class=button3> <br>
 
-</font>
 </form>
-
+</div>
 </body>
 </html>
+
