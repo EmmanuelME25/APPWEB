@@ -9,21 +9,21 @@ if ( isset( $_SESSION['user_id'] ) ) {
     // Let them access the "logged in only" pages
 } else {
     // Redirect them to the login page
-    header("Location: ../index.html");
+    header("Location: ../../");
 }
 ?>
 <html>
 <head>
 
 <title>Registro de libro</title>
-<link rel="stylesheet" type="text/css" href="MENUCSS/REGISTROLIBROCSS.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../MENUCSS/REGISTROLIBROCSS.css" media="screen"/>
 <meta charset="UTF-8">
 
 </head>
 
 <div class="regislibro">
 <body bgcolor=#D5F8CD>
-<img src="IMAGENES_MENU/registro.png" class="registro" alt="Imagen_registro">
+<img src="../IMAGENES_MENU/registro.png" class="registro" alt="Imagen_registro">
 
 <h1>Registro de libro</h1>
 

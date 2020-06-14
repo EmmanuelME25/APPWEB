@@ -9,12 +9,13 @@ if ( isset( $_SESSION['user_id'] ) ) {
     // Let them access the "logged in only" pages
 } else {
     // Redirect them to the login page
-    header("Location: index.html");
+    header("Location: ../");
 }
+
 ?>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/PRINCIPALCSS.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../CSS/PRINCIPALCSS.css" media="screen" />
     <title> Clasmatebooking </title>
 </head>
 <nav class="menu">
@@ -25,10 +26,10 @@ if ( isset( $_SESSION['user_id'] ) ) {
     <span class="lines line-3"></span>
   </label>
 
-   <a href="MENUPRINCIPAL/PETICIONES.php" class="menu-item blue"> <i class="fa fa-anchor"></i> </a>
-   <a href="MENUPRINCIPAL/REGISTRARLIBRO.php" class="menu-item green"> <i class="fa fa-coffee"></i> </a>
-   <a href="MENUPRINCIPAL/LIBROSPRESTADOS/" class="menu-item red"> <i class="fa fa-heart"></i> </a>
-   <a href="MENUPRINCIPAL/PERFIL.php" class="menu-item purple"> <i class="fa fa-microphone"></i> </a>
+   <a href="PETICIONES/" class="menu-item blue"> <i class="fa fa-anchor"></i> </a>
+   <a href="REGISTRARLIBRO/" class="menu-item green"> <i class="fa fa-coffee"></i> </a>
+   <a href="LIBROSPRESTADOS/" class="menu-item red"> <i class="fa fa-heart"></i> </a>
+   <a href="PERFIL/" class="menu-item purple"> <i class="fa fa-microphone"></i> </a>
    <a href="#" class="menu-item orange"> <i class="fa fa-star"></i> </a>
    <a href="#" class="menu-item lightblue"> <i class="fa fa-diamond"></i> </a>
 </nav>

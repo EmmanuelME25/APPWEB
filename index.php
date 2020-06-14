@@ -1,3 +1,12 @@
+<?php
+// Always start this first
+session_start();
+
+// Destroying the session clears the $_SESSION variable, thus "logging" the user
+// out. This also happens automatically when the browser is closed
+session_destroy();
+?>
+
 <html>
 <head>
 <title>Classmatebooking</title>
@@ -20,7 +29,7 @@
 	<label for="password">Constraseña</label>
 	<input type="password" name="contrasena" placeholder="Ingrese contraseña" required="Campo obligatorio">
 	
-	<input type="submit" value="Registrarse" class=button1>
+	<input type="submit" value="Inicia Sesión" class=button1>
 	
 <a href="REGISTRO.html" target="_self"> ¿No tienes un usuario?</a></center>
 </font>

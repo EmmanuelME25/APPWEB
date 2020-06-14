@@ -19,13 +19,20 @@ $query = mysqli_query($conn,"SELECT * FROM usuarios WHERE CORREO = '".$Mail."'")
 $nr = mysqli_num_rows($query);
 
 if($nr == 1){
-    $stmt = $conn->prepare("SELECT PASSHASH FROM usuarios WHERE CORREO = '".$Mail."'");
+    /*$stmt = $conn->prepare("SELECT PASSHASH FROM usuarios WHERE CORREO = '".$Mail."'");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_object();*/
+    
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE CORREO = ?");
+    $stmt->bind_param('s', $Mail);
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_object();
+    
     if(password_verify($Contrasena, $user->PASSHASH)){
-        $_SESSION['user_id'] = mysqli_query($conn, "SELECT ID_U FROM usuarios WHERE CORREO = '".$Mail."'");
-        header("Location: ../PRINCIPAL.php");
+        $_SESSION['user_id'] = $user->ID_U;
+        header("Location: ../PRINCIPAL");
     } else {
         header("Location: ../index.html");
     }
