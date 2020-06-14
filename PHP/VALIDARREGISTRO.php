@@ -59,7 +59,7 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
             $stmt->execute();
             echo '<script type="text/javascript">'; 
             echo 'alert("¡Felicidades! Tu cuenta se ha registrado exitosamente");'; 
-            echo 'window.location.href = "../PRINCIPAL.html";';
+            echo 'window.location.href = "../index.html";';
             echo '</script>';
         } else {
             echo '<script type="text/javascript">'; 

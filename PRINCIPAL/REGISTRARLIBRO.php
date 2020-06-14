@@ -1,11 +1,25 @@
+<?php
+// You'd put this code at the top of any "protected" page you create
+
+// Always start this first
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) {
+    // Grab user data from the database using the user_id
+    // Let them access the "logged in only" pages
+} else {
+    // Redirect them to the login page
+    header("Location: ../index.html");
+}
+?>
 <html>
 <head>
 
 <title>Registro de libro</title>
 <link rel="stylesheet" type="text/css" href="MENUCSS/REGISTROLIBROCSS.css" media="screen"/>
+<meta charset="UTF-8">
 
-
-<head>
+</head>
 
 <div class="regislibro">
 <body bgcolor=#D5F8CD>

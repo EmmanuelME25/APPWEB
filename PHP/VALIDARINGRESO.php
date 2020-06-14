@@ -25,7 +25,7 @@ if($nr == 1){
     $user = $result->fetch_object();
     if(password_verify($Contrasena, $user->PASSHASH)){
         $_SESSION['user_id'] = mysqli_query($conn, "SELECT ID_U FROM usuarios WHERE CORREO = '".$Mail."'");
-        header("Location: ../PRINCIPAL.html");
+        header("Location: ../PRINCIPAL.php");
     } else {
         header("Location: ../index.html");
     }
