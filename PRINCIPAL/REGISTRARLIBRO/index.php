@@ -42,6 +42,9 @@ Editorial:<br>
 Edicion:<br>
 <input type="text" name="edicion" required="required" placeholder="Edicion">
 
+Imagen (Opcional):<br>
+<input type="url" name="Imagen" placeholder="Link de la imagen">
+
 Estado:<br>
 <select name="estado">
 <option value="buen">Buen estado</option>
