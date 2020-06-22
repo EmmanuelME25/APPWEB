@@ -19,15 +19,17 @@ if ( isset( $_SESSION['user_id'] ) ) {
 <link rel="stylesheet" type="text/css" href="../MENUCSS/REGISTROLIBROCSS.css" media="screen"/>
 <meta charset="UTF-8">
 
+	
 </head>
 
 <div class="regislibro">
 <body bgcolor=#D5F8CD>
+
 <img src="../IMAGENES_MENU/registro.png" class="registro" alt="Imagen_registro">
 
 <h1>Registro de libro</h1>
 
-<form method="POST" target="MENUPHP/VALIDARREGISTROLIBRO.PHP">
+<form method="POST"  action ="PHP/VALIDARREGISTROLIBRO.php" onsubmit="return validateform()">
 
 <hr color=000000><br>
 Título:<br>
@@ -46,7 +48,7 @@ Imagen (Opcional):<br>
 <input type="url" name="Imagen" placeholder="Link de la imagen">
 
 Estado:<br>
-<select name="estado">
+<select name="estado" required="required">
 <option value="buen">Buen estado</option>
 <option value="regular">Regular</option>
 <option value="mal">Malo</option>
@@ -58,4 +60,5 @@ Estado:<br>
 </div>
 </body>
 </html>
+  <a href="../index.php" target="_self"><img src="IMAGENES/logo.png" class="me" alt="Logo" width=50 height=50></a>
 

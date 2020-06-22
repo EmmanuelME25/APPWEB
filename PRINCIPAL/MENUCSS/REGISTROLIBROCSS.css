@@ -6,6 +6,12 @@ body{
   font-family: sanserif;
   height: 100vh;
 }
+.me{
+	position: absolute;
+  top: 30px;
+  left: 30px;
+	
+}
 .regislibro{
   width: 500px;
   height: 750px;

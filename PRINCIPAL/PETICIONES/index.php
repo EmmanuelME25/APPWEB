@@ -12,6 +12,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
     header("Location: ../../");
 }
 ?>
+<link rel="stylesheet" type="text/css" href="CSS/index.css" media="screen"/>
+
 <html>
 <head>
 
@@ -24,4 +26,5 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 </body>
 </html>
+  <a href="../index.php" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
 
