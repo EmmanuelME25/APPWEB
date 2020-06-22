@@ -61,16 +61,16 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<a href="EDITARPERFIL/">Editar perfil</a>
 	</li>
         <li><?php
-        echo "Libros prestados $NPr ";
+        echo "Has prestado $NPr libros";
         echo "<br>";
-        echo "Tu calificación $Calif";
+        echo "Tu calificación actual es $Calif";
     ?></li>
         </ul>
 		
     </div>
     </div>
   </div>
-  <a href="../index.php" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+  <a href="../" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
 
   
 

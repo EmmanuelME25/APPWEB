@@ -23,4 +23,4 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 </body>
 </html>
-  <a href="../index.php" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+  <a href="../" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>

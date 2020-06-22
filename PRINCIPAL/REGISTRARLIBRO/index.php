@@ -60,5 +60,5 @@ Estado:<br>
 </div>
 </body>
 </html>
-  <a href="../index.php" target="_self"><img src="IMAGENES/logo.png" class="me" alt="Logo" width=50 height=50></a>
+  <a href="../" target="_self"><img src="IMAGENES/logo.png" class="me" alt="Logo" width=50 height=50></a>
 

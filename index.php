@@ -24,10 +24,10 @@ session_destroy();
 <form name="formI" method="POST" action="PHP/VALIDARINGRESO.php" name="initialpage">
 
 	<label for="username">Correo</label>
-	<input type="email" name="correo" placeholder="Ingrese correo" required="Campo obligatorio">
+	<input type="email" name="correo" placeholder="Ingrese su correo" required="Campo obligatorio">
 
 	<label for="password">Constraseña</label>
-	<input type="password" name="contrasena" placeholder="Ingrese contraseña" required="Campo obligatorio">
+	<input type="password" name="contrasena" placeholder="Ingrese su contraseña" required="Campo obligatorio">
 	
 	<input type="submit" value="Inicia Sesión" class=button1>
 	
