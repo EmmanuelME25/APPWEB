@@ -41,7 +41,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 </head>
 <body>
     <?php
-        //echo "<img src='$FotoPerf' height=250 width=250>";
+        echo "<img src='$FotoPerf' height=250 width=250>";
         echo "$Nombre $Ap1 $Ap2";
     ?>
     <br><br><br><hr>
