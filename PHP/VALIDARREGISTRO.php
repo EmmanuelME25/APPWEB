@@ -10,6 +10,8 @@ $Sapellido = $_POST["apellido2"];
 $Corr = $_POST["correo"];
 $Contrasena = $_POST["contrasena"];
 $Numero = $_POST["telefono"];
+$Foto = $_POST["imagen"];
+$Cero = 0;
 
 if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) || !empty($Contrasena)){
     $host = "localhost";
@@ -18,6 +20,7 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
     $dbName = "CLASSMATEBOOKING";
     
     $conn = new mysqli($host, $usDb, $passDb, $dbName);
+    mysqli_set_charset($conn, "utf8");
     
     if(mysqli_connect_error()){
         die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
@@ -44,7 +47,7 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
         $Hash=password_hash($Contrasena, PASSWORD_DEFAULT);
         
         $SELMAI = "SELECT CORREO From usuarios Where CORREO=? Limit 1";
-        $INSERT = "INSERT into usuarios (ID_U, NOMBRE, APELLIDO1, APELLIDO2, CORREO, TELEFONO, PASSHASH) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $INSERT = "INSERT into usuarios (ID_U, NOMBRE, APELLIDO1, APELLIDO2, CORREO, TELEFONO, PASSHASH, ProfPic, NUMPRESTAS, CALIFUSER) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         $stmt = $conn->prepare($SELMAI);
         $stmt->bind_param("s",$Corr);
@@ -55,11 +58,11 @@ if(!empty($Nombre) || !empty($Papellido) || !empty($Sapellido) || !empty($Corr) 
         
         if($rnum==0){
             $stmt = $conn->prepare($INSERT);
-            $stmt->bind_param("sssssss", $newID, $Nombre, $Papellido, $Sapellido, $Corr, $Numero, $Hash);
+            $stmt->bind_param("ssssssssii", $newID, $Nombre, $Papellido, $Sapellido, $Corr, $Numero, $Hash, $Foto, $Cero, $Cero);
             $stmt->execute();
             echo '<script type="text/javascript">'; 
             echo 'alert("¡Felicidades! Tu cuenta se ha registrado exitosamente");'; 
-            echo 'window.location.href = "../index.html";';
+            echo 'window.location.href = "../";';
             echo '</script>';
         } else {
             echo '<script type="text/javascript">'; 
