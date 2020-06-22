@@ -1,9 +1,19 @@
 <?php
+// Always start this first
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) {
+    $IDUser = $_SESSION['user_id'];
+} else {
+    // Redirect them to the login page
+    header("Location: ../../");
+}
+
 include 'RandomStr.php';
-echo "<head>";
-echo "<link rel='stylesheet' type='text/css' href='../CSS/REGISTROCSS.css' media='screen'/>";
-echo "<meta charset='UTF-8'>";
-echo "</head>";
+echo "<head>
+        <link rel='stylesheet' type='text/css' href='../CSS/REGISTROCSS.css' media='screen'/>
+        <meta charset='UTF-8'>
+        </head>";
 
 $Titulo = $_POST["titulo"];
 $Autor = $_POST["autor"];
@@ -44,15 +54,23 @@ if(!empty($Titulo) || !empty($Autor) || !empty($Editorial) || !empty($Edicion) |
             
         }
         
-        
-        $INSERT = "INSERT into libros (ID_L, TITULO, EDICION, EDITORIAL, AUTOR, ESTADO, BookPic) VALUES ($newID, $Titulo, $Edicion, $Editorial, $Autor, $Estado, $Foto)";
-        
-        
-            echo '<script type="text/javascript">'; 
-            echo 'alert("¡Felicidades! Se ha registrado exitosamente");'; 
-            echo 'window.location.href = "../";';
-            echo '</script>';
+        $INSERTL = "INSERT into libros (ID_L, TITULO, EDICION, EDITORIAL, AUTOR, ESTADO, BookPic) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $INSERTR = "INSERT into lib_us (ID_U, ID_L) VALUES (?,?)";
        
+        $stmt = $conn->prepare($INSERTL);
+        $stmt->bind_param("sssssss", $newID, $Titulo, $Edicion, $Editorial, $Autor, $Estado, $Foto);
+        $stmt->execute();
+        
+        $stmt = $conn->prepare($INSERTR);
+        $stmt->bind_param("ss", $IDUser, $newID);
+        $stmt->execute();
+        
+        echo '<script type="text/javascript">
+                alert("¡Felicidades! Se ha registrado exitosamente")
+                window.location.href = "../";;
+                </script>';
+        
+        $stmt->close();
     }
     
 } else {
