@@ -28,26 +28,45 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 ?>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="../CSS/PRINCIPALCSS.css" media="screen" />
-        <title> Clasmatebooking </title>
-    </head>
-    <nav class="menu"> <!-- Me parece que este es el menu circular del que hay que deshacerse -->
-    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-    <label class="menu-open-button" for="menu-open">
-        <span class="lines line-1"></span>
-        <span class="lines line-2"></span>
-        <span class="lines line-3"></span>
-    </label>
+<head>
+	<meta charset="UTF-8">
+	<title>hover effect</title>
+	<link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
+</head>
+<body>
+	
+	<div id="titulo">
+		<b><p id="header">Classmatebooking</p>
+	</div>
 
-    <a href="PETICIONES/" class="menu-item blue"> <i class="fa fa-anchor"></i> </a>
-    <a href="REGISTRARLIBRO/" class="menu-item green"> <i class="fa fa-coffee"></i> </a>
-    <a href="LIBROSPRESTADOS/" class="menu-item red"> <i class="fa fa-heart"></i> </a>
-    <a href="PERFIL/" class="menu-item purple"> <i class="fa fa-microphone"></i> </a>
-    <a href="#" class="menu-item orange"> <i class="fa fa-star"></i> </a>
-    <a href="#" class="menu-item lightblue"> <i class="fa fa-diamond"></i> </a>
-    </nav>
-    <body>
+	<header>
+		
+		<div class="contenedor" id="uno">
+			 <a href="index.php"><img class="icon" src="IMAGENES_MENU/home.png"></a>
+			<p class="texto">Inicio</p>
+		</div>
+
+		<div class="contenedor" id="dos">
+			 <a href="LIBROSPRESTADOS_index.php"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
+			<p class="texto">Sesión</p>
+		</div>
+
+		<div class="contenedor" id="tres">
+			 <a href="PERFIL_index.php"><img class="icon" src="IMAGENES_MENU/perfil.png"></a>
+			<p class="texto">Perfil</p>
+		</div>
+
+		<div class="contenedor" id="cuatro">
+			 <a href="PETICIONES_index.php"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
+			<p class="texto">Peticiones</p>
+		</div>
+
+		<div class="contenedor" id="cinco">
+			 <a href="REGISTRARLIBRO_index.php"><img class="icon" src="IMAGENES_MENU/registro.png"></a>
+			<p class="texto">Registro</p>
+		</div>
+
+	</header>
     <?php
         echo "<table style='padding:10px;'><tr>";
 
