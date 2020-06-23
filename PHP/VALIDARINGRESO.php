@@ -19,10 +19,6 @@ $query = mysqli_query($conn,"SELECT * FROM usuarios WHERE CORREO = '".$Mail."'")
 $nr = mysqli_num_rows($query);
 
 if($nr == 1){
-    /*$stmt = $conn->prepare("SELECT PASSHASH FROM usuarios WHERE CORREO = '".$Mail."'");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_object();*/
     
     $stmt = $conn->prepare("SELECT * FROM usuarios WHERE CORREO = ?");
     $stmt->bind_param('s', $Mail);
