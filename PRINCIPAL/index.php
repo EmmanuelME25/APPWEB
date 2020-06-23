@@ -28,47 +28,47 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 ?>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>hover effect</title>
-	<link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
-</head>
-<body>
-	
-	<div id="titulo">
-		<b><p id="header">Classmatebooking</p>
-	</div>
+    <head>
+        <meta charset="UTF-8">
+        <title>hover effect</title>
+        <link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
+    </head>
+    <body>
+        
+        <div id="titulo">
+            <b><p id="header">Classmatebooking</p>
+        </div>
 
-	<header>
-		
-		<div class="contenedor" id="uno">
-			 <a href="index.php"><img class="icon" src="IMAGENES_MENU/home.png"></a>
-			<p class="texto">Inicio</p>
-		</div>
+        <header>
+            
+            <div class="contenedor" id="uno">
+                <a href="../PRINCIPAL"><img class="icon" src="IMAGENES_MENU/home.png"></a>
+                <p class="texto">Inicio</p>
+            </div>
 
-		<div class="contenedor" id="dos">
-			 <a href="LIBROSPRESTADOS_index.php"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
-			<p class="texto">Sesión</p>
-		</div>
+            <div class="contenedor" id="dos">
+                <a href="LIBROSPRESTADOS/"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
+                <p class="texto">Sesión</p>
+            </div>
 
-		<div class="contenedor" id="tres">
-			 <a href="PERFIL_index.php"><img class="icon" src="IMAGENES_MENU/perfil.png"></a>
-			<p class="texto">Perfil</p>
-		</div>
+            <div class="contenedor" id="tres">
+                <a href="PERFIL/"><img class="icon" src="IMAGENES_MENU/perfil.png"></a>
+                <p class="texto">Perfil</p>
+            </div>
 
-		<div class="contenedor" id="cuatro">
-			 <a href="PETICIONES_index.php"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
-			<p class="texto">Peticiones</p>
-		</div>
+            <div class="contenedor" id="cuatro">
+                <a href="PETICIONES/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
+                <p class="texto">Peticiones</p>
+            </div>
 
-		<div class="contenedor" id="cinco">
-			 <a href="REGISTRARLIBRO_index.php"><img class="icon" src="IMAGENES_MENU/registro.png"></a>
-			<p class="texto">Registro</p>
-		</div>
+            <div class="contenedor" id="cinco">
+                <a href="REGISTRARLIBRO/"><img class="icon" src="IMAGENES_MENU/registro.png"></a>
+                <p class="texto">Registro</p>
+            </div>
 
-	</header>
-    <?php
-        echo "<table style='padding:10px;'><tr>";
+        </header>
+        <?php
+        echo "<table style='padding:10px; padding-left:150px'><tr>";
 
         while($row = mysqli_fetch_array($result)){
         $Titulo = $row['TITULO'];
