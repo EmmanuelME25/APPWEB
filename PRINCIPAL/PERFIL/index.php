@@ -8,6 +8,8 @@
     include "../../PHP/Connect.php";
     include "../../PHP/GetSessionData.php";
     
+    if(empty($FotoPerf)) $FotoPerf = '../../IMAGENES/NoPhoto.jpeg';
+    
 ?>
 <html>
     <head>
