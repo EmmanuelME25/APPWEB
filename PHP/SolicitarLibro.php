@@ -8,7 +8,7 @@
     $IDU = $_SESSION['user_id'];
     $NewSt = 'SOLICITADO';
 
-    $stmt = $conn->prepare("INSERT into prestamo (ID_U, ID_L) VALUES (?,?)");
+    $stmt = $conn->prepare("INSERT into prestamo (ID_U, ID_L, FECHAINI) VALUES (?,?, now())");
     $stmt->bind_param('ss',$IDU, $IDL);
     $stmt->execute();
     

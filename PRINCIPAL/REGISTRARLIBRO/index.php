@@ -44,9 +44,9 @@ Imagen (Opcional):<br>
 
 Estado:<br>
 <select name="estado" required="required">
-<option value="buen">Buen estado</option>
-<option value="regular">Regular</option>
-<option value="mal">Malo</option>
+<option value="Bueno">Buen estado</option>
+<option value="Regular">Regular</option>
+<option value="Malo">Malo</option>
 </select>
 <br><br>
 <input type="submit" value="Registrar" class=button3> <br>

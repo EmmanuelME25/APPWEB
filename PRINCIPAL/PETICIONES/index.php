@@ -5,6 +5,13 @@
     session_start();
 
     include "../../PHP/VerifySession.php";
+    include "../../PHP/Connect.php";
+    
+    $IDU = $_SESSION['user_id'];
+    $stmt = $conn->prepare("SELECT * FROM lib_us WHERE ID_U=?");
+    $stmt->bind_param("s",$IDU);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
 ?>
 <html>
@@ -17,7 +24,60 @@
         <title>Peticiones</title>
     </head>
     <body>
+        <?php
+            //Mostrar los libros del usuario actual que esten en solicitud
+            while($row = mysqli_fetch_array($result)){
+                $IDL = $row['ID_L'];
+                
+                //Pedir información del libro
+                $stmt = $conn->prepare("SELECT * FROM libros WHERE ID_L=?");
+                $stmt->bind_param("s",$IDL);
+                $stmt->execute();
+                $Libro = $stmt->get_result();
+                $Libro = $Libro->fetch_object();
+                
+                //Si el libro está en solicitud
+                if($Libro->STATUS=='SOLICITADO'){
+                    
+                    //Obtener ID del usuario que solicita el libro
+                    $stmt = $conn->prepare("SELECT * FROM prestamo WHERE ID_L=?");
+                    $stmt->bind_param("s",$IDL);
+                    $stmt->execute();
+                    $IDUP = $stmt->get_result();
+                    $IDUP = $IDUP->fetch_object();
+                    $IDUP = $IDUP->ID_U;
+                    
+                    //Obtener información del usuario que solicita el libro
+                    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID_U=?");
+                    $stmt->bind_param("s",$IDUP);
+                    $stmt->execute();
+                    $UP = $stmt->get_result();
+                    $UP = $UP->fetch_object();
 
+                    $Imagen = $Libro->BookPic;
+                    $Titulo = $Libro->TITULO;
+                    $Autor = $Libro->AUTOR;
+                    $NombreUP = $UP->NOMBRE;
+                    $AP1UP = $UP->APELLIDO1;
+                    $AP2UP = $UP->APELLIDO2;
+            
+                        echo "  
+                                        <td>
+                                            <img src=$Imagen height=240 width=135 style='object-fit: cover'>
+                                            <br><br>
+                                            $Titulo
+                                            <br><br>
+                                            Autor: $Autor
+                                            <br><br>
+                                            Solicitado por: $NombreUP $AP1UP $AP2UP
+                                            <br><br>
+                                        </td>
+                                    ";
+                    
+            }
+            echo "</tr>";
+        }
+        ?>
     </body>
     </html>
     <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>

@@ -26,7 +26,7 @@
             while($row = mysqli_fetch_array($result)){
                 $IDL = $row['ID_L'];
 
-                if($row['ESTADOPR' == 'SOLICITADO']){
+                if($row['ESTADOPR'] == 'SOLICITADO'){
 
                     $stmt = $conn->prepare("SELECT * FROM libros WHERE ID_L=?");
                     $stmt->bind_param("s",$IDL);

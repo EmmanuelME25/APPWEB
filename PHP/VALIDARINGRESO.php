@@ -30,10 +30,10 @@ if($nr == 1){
         $_SESSION['user_id'] = $user->ID_U;
         header("Location: ../PRINCIPAL");
     } else {
-        header("Location: ../index.html");
+        header("Location: ../");
     }
 } else {
-    header("Location: ../index.html");
+    header("Location: ../");
 }
 
 ?>
