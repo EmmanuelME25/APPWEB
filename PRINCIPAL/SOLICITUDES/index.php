@@ -22,6 +22,7 @@
     </head>
     <body>
         <table>
+            <form name='solicitados' action='../../PHP/CancelarSolicitud.php' method='POST'>
         <?php
             while($row = mysqli_fetch_array($result)){
                 $IDL = $row['ID_L'];
@@ -63,13 +64,14 @@
                                             <br><br>
                                             Propietario: $NombreU $AP1U $AP2U
                                         </td><td>
-                                            <button>Cancelar solicitud</button>
+                                            <button type='submit' name='Libro' value=$IDL>Cancelar solicitud</button>
                                         </td>";
                     
             }
             echo "</tr>";
         }
         ?>
+            </form>
         </table>
     </body>
     </html>
