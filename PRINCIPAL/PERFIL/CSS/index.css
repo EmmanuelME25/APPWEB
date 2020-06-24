@@ -1,7 +1,7 @@
 *{box-sizing:border-box}
 body {
   margin: 0;
-  background: #1C1A30;
+  background: #f1e7cd;
   height: 100vh;
   display: -webkit-flex;
   display: flex;
@@ -107,7 +107,7 @@ li {
   margin: 0 1%;
   float: left;
   padding: 10px;
-  border: 2px solid #FC5135;
+  border: 2px solid #545454;
   border-radius: 4px;
   position: relative;
   text-align: center;
@@ -120,7 +120,7 @@ li:before {
   margin-left: -15px;
   width: 30px;
   height:30px;
-  background: #FC5135;
+  background: #dfa239;
   color: white;
   line-height: 30px;
   text-align: center;
@@ -131,7 +131,7 @@ li:nth-child(1):before {content: "\f095"}
 li:nth-child(2):before {content: "\f003"}
 li:nth-child(3):before {content: "\f0c1"}
 h1 {
-  color: #FC5135;
+  color: #dfa239;
   text-transform: uppercase;
   font-weight: 400;
   line-height: 1;
@@ -149,4 +149,10 @@ h1 i {
   font-style: normal;
   text-transform: none;
   font-family: 'Playfair Display', serif;
+}
+a {
+  color: #4E203C;
+  display: block;
+  font-size: 1em;
+  text-decoration: none;
 }
