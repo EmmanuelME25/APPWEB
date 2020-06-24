@@ -43,8 +43,8 @@ $result = $stmt->get_result();
             </div>
 
             <div class="contenedor" id="cuatro">
-                <a href="PETICIONES/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
-                <p class="texto">Peticiones</p>
+                <a href="PRESTAMOS/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
+                <p class="texto">Préstamos</p>
             </div>
 
             <div class="contenedor" id="cinco">
