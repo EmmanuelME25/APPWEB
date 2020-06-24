@@ -32,8 +32,8 @@ $result = $stmt->get_result();
             </div>
 
             <div class="contenedor" id="dos">
-                <a href="LIBROSPRESTADOS/"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
-                <p class="texto">Sesión</p>
+                <a href="SOLICITUDES/"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
+                <p class="texto">Solicitudes</p>
             </div>
 
             <div class="contenedor" id="tres">
@@ -53,7 +53,9 @@ $result = $stmt->get_result();
 
         </header>
         <?php
-        echo "<table style='padding:10px; padding-left:150px'><tr>";
+        echo "  <table style='padding:10px; padding-left:150px'>
+                        <form name='Solicitar' action='../PHP/SolicitarLibro.php' method='POST'>
+                            <tr>";
 
         while($row = mysqli_fetch_array($result)){
         $Titulo = $row['TITULO'];
@@ -87,11 +89,13 @@ $result = $stmt->get_result();
                             Autor: $Autor
                             <br><br>
                             Propietario: $NombreU $AP1U $AP2U
+                            <br><br>
+                            <button type='submit' name='Libro' value=$IDLib>Solicitar</button>
                         </td>
                     ";
         }
 
-        echo "</table></tr>";
+        echo "</form></tr></table>";
 
         $stmt->close();
     ?>

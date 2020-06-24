@@ -47,7 +47,7 @@ header{
 }
 
 div.contenedor{
-    width: 115px;
+    width: 120px;
     height: 150px;
     float:left;
     -webkit-transition: height .4s;

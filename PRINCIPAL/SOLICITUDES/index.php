@@ -14,7 +14,7 @@
     <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../../CSS/pages.css" media="screen"/>
-        <title>Peticiones</title>
+        <title>Solicitudes</title>
     </head>
     <body>
 
