@@ -19,7 +19,6 @@ $result = $stmt->get_result();
         <link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
     </head>
     <body>
-        
         <div id="titulo">
             <b><p id="header">Classmatebooking</p>
         </div>
@@ -56,43 +55,52 @@ $result = $stmt->get_result();
         echo "  <table style='padding:10px; padding-left:150px'>
                         <form name='Solicitar' action='../PHP/SolicitarLibro.php' method='POST'>
                             <tr>";
-
+        
+        $I=0;
+        
         while($row = mysqli_fetch_array($result)){
-        $Titulo = $row['TITULO'];
-        $Autor = $row['AUTOR'];
-        $Imagen = $row['BookPic'];
-        $IDLib = $row['ID_L'];
-        
-        $stmt = $conn->prepare("SELECT * from lib_us WHERE ID_L = ?");
-        $stmt->bind_param("s",$IDLib);
-        $stmt->execute();
-        $resulta = $stmt->get_result();
-        $IDUs = $resulta->fetch_object();
-        $IDUs = $IDUs->ID_U;
-        
-        $stmt = $conn->prepare("SELECT * from usuarios WHERE ID_U = ?");
-        $stmt->bind_param("s",$IDUs);
-        $stmt->execute();
-        $resulta = $stmt->get_result();
-        $user = $resulta->fetch_object();
-        
-        $NombreU = $user->NOMBRE;
-        $AP1U = $user->APELLIDO1;
-        $AP2U = $user->APELLIDO2;
-        
-        echo "  
-                        <td id='tablalibros'>
-                            <img src=$Imagen height=240 width=135 style='object-fit: cover'>
-                            <br><br>
-                            $Titulo
-                            <br><br>
-                            Autor: $Autor
-                            <br><br>
-                            Propietario: $NombreU $AP1U $AP2U
-                            <br><br>
-                            <button type='submit' name='Libro' value=$IDLib>Solicitar</button>
-                        </td>
-                    ";
+            $I = $I+1;
+            $Titulo = $row['TITULO'];
+            $Autor = $row['AUTOR'];
+            $Imagen = $row['BookPic'];
+            $IDLib = $row['ID_L'];
+            $Status = $row['STATUS'];
+            
+            if($Status=='DISPONIBLE'){
+
+                $stmt = $conn->prepare("SELECT * from lib_us WHERE ID_L = ?");
+                $stmt->bind_param("s",$IDLib);
+                $stmt->execute();
+                $resulta = $stmt->get_result();
+                $IDUs = $resulta->fetch_object();
+                $IDUs = $IDUs->ID_U;
+                
+                $stmt = $conn->prepare("SELECT * from usuarios WHERE ID_U = ?");
+                $stmt->bind_param("s",$IDUs);
+                $stmt->execute();
+                $resulta = $stmt->get_result();
+                $user = $resulta->fetch_object();
+                
+                $NombreU = $user->NOMBRE;
+                $AP1U = $user->APELLIDO1;
+                $AP2U = $user->APELLIDO2;
+                
+                if($I%7==0) echo "</tr><tr>";
+    
+                echo "  
+                                <td id='tablalibros'>
+                                    <img src=$Imagen height=240 width=135 style='object-fit: cover'>
+                                    <br><br>
+                                    $Titulo
+                                    <br><br>
+                                    Autor: $Autor
+                                    <br><br>
+                                    Propietario: $NombreU $AP1U $AP2U
+                                    <br><br>
+                                    <button type='submit' name='Libro' value=$IDLib>Solicitar</button>
+                                </td>
+                            ";
+               }
         }
 
         echo "</form></tr></table>";
