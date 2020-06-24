@@ -7,6 +7,8 @@ session_start();
 include "../PHP/VerifySession.php";
 include "../PHP/Connect.php";
 
+$IDU = $_SESSION['user_id'];
+
 $stmt = $conn->prepare("SELECT * from libros");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -96,10 +98,13 @@ $result = $stmt->get_result();
                                     Autor: $Autor
                                     <br><br>
                                     Propietario: $NombreU $AP1U $AP2U
-                                    <br><br>
-                                    <button type='submit' name='Libro' value=$IDLib>Solicitar</button>
-                                </td>
-                            ";
+                                    <br><br>";
+
+                //Si el libro no es del usuario actual
+                if($IDU != $IDUs){
+                    echo "<button type='submit' name='Libro' value=$IDLib>Solicitar</button>";
+                }
+                echo "</td>";
                }
         }
 

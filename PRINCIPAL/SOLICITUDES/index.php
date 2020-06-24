@@ -21,7 +21,7 @@
         <title>Solicitudes</title>
     </head>
     <body>
-        <table style='padding:10px'><tr>
+        <table>
         <?php
             while($row = mysqli_fetch_array($result)){
                 $IDL = $row['ID_L'];
@@ -54,17 +54,17 @@
                     $AP2U = $Dueno->APELLIDO2;
             
                         echo "  
-                                        <td>
+                                        <tr><td>
                                             <img src=$Imagen height=240 width=135 style='object-fit: cover'>
-                                            <br><br>
+                                            </td><td>
                                             $Titulo
-                                            <br><br>
+                                            <br>
                                             Autor: $Autor
                                             <br><br>
                                             Propietario: $NombreU $AP1U $AP2U
-                                            <br><br>
-                                        </td>
-                                    ";
+                                        </td><td>
+                                            <button>Cancelar solicitud</button>
+                                        </td>";
                     
             }
             echo "</tr>";

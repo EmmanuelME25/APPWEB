@@ -24,6 +24,7 @@
         <title>Peticiones</title>
     </head>
     <body>
+        <table>
         <?php
             //Mostrar los libros del usuario actual que esten en solicitud
             while($row = mysqli_fetch_array($result)){
@@ -62,15 +63,20 @@
                     $AP2UP = $UP->APELLIDO2;
             
                         echo "  
-                                        <td>
+                                        <tr><td>
                                             <img src=$Imagen height=240 width=135 style='object-fit: cover'>
-                                            <br><br>
+                                        </td><td>
                                             $Titulo
-                                            <br><br>
+                                            <br>
                                             Autor: $Autor
                                             <br><br>
                                             Solicitado por: $NombreUP $AP1UP $AP2UP
-                                            <br><br>
+                                        </td><td>
+                                            Establece una fecha de devolución: <br>
+                                            <input type='Date'>
+                                            <button>Prestar libro</button>
+                                        </td><td>
+                                            <button>No prestar libro</button>
                                         </td>
                                     ";
                     
@@ -78,6 +84,7 @@
             echo "</tr>";
         }
         ?>
+        </table>
     </body>
     </html>
     <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
