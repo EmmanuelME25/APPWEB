@@ -1,37 +1,13 @@
 <?php
-// You'd put this code at the top of any "protected" page you create
+    // You'd put this code at the top of any "protected" page you create
 
-// Always start this first
-session_start();
-
-if ( isset( $_SESSION['user_id'] ) ) {
-    $host = "localhost";
-    $usDb = "root";
-    $passDb = "";
-    $dbName = "CLASSMATEBOOKING";
-        
-    $conn = new mysqli($host, $usDb, $passDb, $dbName);
-    mysqli_set_charset($conn, "utf8");
-
-    if(mysqli_connect_error()){
-        die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-    }
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID_U = ?");
-    $stmt->bind_param('s', $_SESSION['user_id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_object();
+    // Always start this first
+    session_start();
     
-    $FotoPerf = $user->ProfPic;
-    $Nombre = $user->NOMBRE;
-    $Ap1 = $user->APELLIDO1;
-    $Ap2 = $user->APELLIDO2;
-    $Telf = $user->TELEFONO;
+    include "../../../PHP/VerifySession.php";
+    include "../../../PHP/Connect.php";
+    include "../../../PHP/GetSessionData.php";
     
-} else {
-    // Redirect them to the login page
-    header("Location: ../../../");
-}
 ?>
 
 <html>
@@ -59,7 +35,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
  <label for='apellido2'>Apellido 2</label>
 <input type='text' name='apellido2' placeholder='Ingrese su segundo apellido' value=$Ap2>
  <label for='telefono'>Telefono</label> 
-<input type='text' name='telefono' required='required' placeholder='Ingrese su número de teléfono' value=$Telf>
+<input type='text' name='telefono' required='required' placeholder='Ingrese su número de teléfono' value=$Numero>
  <label for='contraseña'>Confirmar contraseña</label>
 <input type='password' name='contrasena' required='required' placeholder='Confirme su contraseña'>
 <input type='url' name='imagen' placeholder='Cambiar imagen de perfil' value=$FotoPerf>
@@ -71,3 +47,5 @@ if ( isset( $_SESSION['user_id'] ) ) {
 </form>
 </body>
 </html>
+
+<a href="../" target="_self"><img src="../../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>

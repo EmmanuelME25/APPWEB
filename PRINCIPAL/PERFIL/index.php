@@ -1,42 +1,20 @@
-
 <?php
-// You'd put this code at the top of any "protected" page you create
+    // You'd put this code at the top of any "protected" page you create
 
-// Always start this first
-session_start();
-
-if ( isset( $_SESSION['user_id'] ) ) {
-    $host = "localhost";
-    $usDb = "root";
-    $passDb = "";
-    $dbName = "CLASSMATEBOOKING";
-        
-    $conn = new mysqli($host, $usDb, $passDb, $dbName);
-    mysqli_set_charset($conn, "utf8");
-
-    if(mysqli_connect_error()){
-        die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-    }
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID_U = ?");
-    $stmt->bind_param('s', $_SESSION['user_id']);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_object();
+    // Always start this first
+    session_start();
     
-    $FotoPerf = $user->ProfPic;
-    $Nombre = $user->NOMBRE;
-    $Ap1 = $user->APELLIDO1;
-    $Ap2 = $user->APELLIDO2;
-    $NPr = $user->NUMPRESTAS;
-    $Calif = $user->CALIFUSER;
-    $Numero = $user->TELEFONO;
-
-} else {
-    // Redirect them to the login page
-    header("Location: ../../");
-}
+    include "../../PHP/VerifySession.php";
+    include "../../PHP/Connect.php";
+    include "../../PHP/GetSessionData.php";
+    
 ?>
-<link rel="stylesheet" type="text/css" href="CSS/index.css" media="screen"/>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="CSS/index.css" media="screen"/>
+        <title>Mi perfil</title>
+    </head>
 <div class="container">
   <div class="card">
     <div class="front">
@@ -70,7 +48,5 @@ if ( isset( $_SESSION['user_id'] ) ) {
     </div>
     </div>
   </div>
-  <a href="../" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
-
-  
-
+  <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+</html>

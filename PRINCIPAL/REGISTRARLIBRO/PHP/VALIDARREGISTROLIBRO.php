@@ -9,7 +9,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
     header("Location: ../../");
 }
 
-include 'RandomStr.php';
+include '../../../PHP/RandomStr.php';
 echo "<head>
         <link rel='stylesheet' type='text/css' href='../CSS/REGISTROCSS.css' media='screen'/>
         <meta charset='UTF-8'>

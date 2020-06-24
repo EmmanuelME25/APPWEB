@@ -1,18 +1,13 @@
 <?php
-// You'd put this code at the top of any "protected" page you create
+    // You'd put this code at the top of any "protected" page you create
 
-// Always start this first
-session_start();
+    // Always start this first
+    session_start();
 
-if ( isset( $_SESSION['user_id'] ) ) {
-    // Grab user data from the database using the user_id
-    // Let them access the "logged in only" pages
-} else {
-    // Redirect them to the login page
-    header("Location: ../../");
-}
+    include "../../PHP/VerifySession.php";
+
 ?>
-<link rel="stylesheet" type="text/css" href="CSS/index.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../../CSS/pages.css" media="screen"/>
 
 <html>
 <head>
@@ -23,4 +18,4 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 </body>
 </html>
-  <a href="../" target="_self"><img src="IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+<a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>

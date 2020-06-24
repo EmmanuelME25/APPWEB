@@ -4,33 +4,18 @@
 // Always start this first
 session_start();
 
-if ( isset( $_SESSION['user_id'] ) ) {
-    $host = "localhost";
-    $usDb = "root";
-    $passDb = "";
-    $dbName = "CLASSMATEBOOKING";
-        
-    $conn = new mysqli($host, $usDb, $passDb, $dbName);
-    mysqli_set_charset($conn, "utf8");
+include "../PHP/VerifySession.php";
+include "../PHP/Connect.php";
 
-    if(mysqli_connect_error()){
-        die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-    }
-    
-    $stmt = $conn->prepare("SELECT * from libros");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-} else {
-    // Redirect them to the login page
-    header("Location: ../");
-}
+$stmt = $conn->prepare("SELECT * from libros");
+$stmt->execute();
+$result = $stmt->get_result();
 
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>hover effect</title>
+        <title>Classmatebooking</title>
         <link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
     </head>
     <body>
