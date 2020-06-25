@@ -100,11 +100,11 @@ p.texto{
 }
 
 div.contenedor:hover{
-    height:170px;
+    height:180px;
 }
 
 div.contenedor:hover p.texto{
-    padding-top: 20px;
+    padding-top: 10px;
     opacity: 1;
 }
 
