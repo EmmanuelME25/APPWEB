@@ -18,28 +18,33 @@
 	
 	if($SttsC){
 		$stmt = $conn->prepare("UPDATE prestamo SET COMENTPREST=?, CALIFPREST=?, ESTADOPR=? WHERE ID_L=? AND ID_U=? AND ESTADOPR!=? AND CALIFPREST IS NULL");
-		$IDA = $IDD;
 	} else {
 		$stmt = $conn->prepare("UPDATE prestamo SET COMENTDUENO=?, CALIFDUENO=?, ESTADOPR=? WHERE ID_L=? AND ID_U=? AND ESTADOPR!=? AND CALIFDUENO IS NULL");
-		$IDA = $IDP;
 	}
 	
 	$stmt->bind_param("ssssss",$Comment, $Calif, $NewState, $IDL, $IDP, $OldState);
 	$stmt->execute();
 	
-	if($IDP == $IDA){
+	if($IDP == $UsCal){
 		$Status = 'DISPONIBLE';
 		$stmt = $conn->prepare("UPDATE libros SET STATUS=? WHERE ID_L=?");
 		$stmt->bind_param("ss",$Status, $IDL);
 		$stmt->execute();
 	}
 	
-	$stmt = $conn->prepare("UPDATE usuarios SET `NUMPRESTAS` = `NUMPRESTAS`+1 WHERE `ID_U`=?");
-	$stmt->bind_param("s",$IDA);
+	$stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID_U=?");
+	$stmt->bind_param("s",$UsCal);
 	$stmt->execute();
+	$DataU = $stmt->get_result();
+	$DataU = $DataU->fetch_object();
 	
-	$stmt = $conn->prepare("UPDATE usuarios SET `CALIFUSER` = ((`CALIFUSER`*(`NUMPRESTAS`-1)+5)/`NUMPRESTAS`) WHERE `ID_U`=?");
-	$stmt->bind_param("s",$IDA);
+	$OldC = $DataU->CALIFUSER;
+	$NPr = $DataU->NUMPRESTAS;
+	$NPr = $NPr + 1;
+	$NewC = ($OldC*($NPr-1)+$Calif)/$NPr;
+	
+	$stmt = $conn->prepare("UPDATE usuarios SET CALIFUSER=?, NUMPRESTAS=? WHERE ID_U=?");
+	$stmt->bind_param("sss",$NewC, $NPr, $UsCal);
 	$stmt->execute();
 	
 	header("Location: ../PRINCIPAL");

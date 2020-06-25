@@ -10,6 +10,8 @@
     
     if(empty($FotoPerf)) $FotoPerf = '../../IMAGENES/NoPhoto.jpeg';
     
+    $Calif = round($Calif, 1);
+    
 ?>
 <html>
     <head>
@@ -43,9 +45,9 @@
 		<a href="EDITARPERFIL/">Editar perfil</a>
 	</li>
         <li><?php
-        echo "Has prestado $NPr libros";
+        echo "Has tenido $NPr intercambios";
         echo "<br>";
-        echo "Tu calificación actual es $Calif";
+        echo "Tu calificación actual es $Calif ★";
     ?></li>
         </ul>
 		

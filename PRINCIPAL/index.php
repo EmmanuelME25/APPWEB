@@ -8,6 +8,7 @@ include "../PHP/VerifySession.php";
 include "../PHP/Connect.php";
 
 $IDU = $_SESSION['user_id'];
+$Pop = 0;
 
 $stmt = $conn->prepare("SELECT * from libros");
 $stmt->execute();
