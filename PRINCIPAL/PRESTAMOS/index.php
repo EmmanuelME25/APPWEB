@@ -20,7 +20,7 @@
 
     <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../../CSS/pages.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="CSS_PRESTAMOS/index.css" media="screen"/>
         <title>Préstamos</title>
     </head>
     <body>
@@ -87,6 +87,10 @@
         ?>
 			</form>
         </table>
+		<div class='Cuadrado'></div>
+	<div class='Cuadrado1'></div>
+	<h1 class="1">En proceso de aceptación</h1>
+	<div class='Cuadrado2'></div>
     </body>
     </html>
     <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
