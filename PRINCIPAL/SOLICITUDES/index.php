@@ -23,6 +23,7 @@
     <body>
     <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
 	<div class='Cuadrado'></div>
+	<div class='Cuadrado1'></div>
 	<div id="left">
 		<h1 class="1">En proceso de aceptación</h1><hr><br>
 		<table>
@@ -95,7 +96,7 @@
 
 					if($row['ESTADOPR'] == 'PRESTADO' || $row['ESTADOPR'] == 'DEVUELTO'){
 						$EstadoTP = $row['ESTADOPR'];
-						$YC = $row['COMENTPREST'];
+						$YC = $row['COMENTDUENO'];
 						
 						$stmt = $conn->prepare("SELECT * FROM libros WHERE ID_L=?");
 						$stmt->bind_param("s",$IDL);
@@ -137,7 +138,7 @@
 												</div>
 											</td><td>
 												<div style='padding: 20; align-content: center; position:relative;'>
-													Tu comentario: $YC
+													Comentario del dueño:<br><i> $YC </i>
 												</div>
 											</td>";
 						
