@@ -13,13 +13,41 @@ $stmt = $conn->prepare("SELECT * from libros");
 $stmt->execute();
 $result = $stmt->get_result();
 
+$stmt = $conn->prepare("SELECT * FROM prestamo");
+$stmt->execute();
+$prestamos = $stmt->get_result();
+
+while($linea = mysqli_fetch_array($prestamos)){
+	$fechaa = (new \DateTime())->format('Y-m-d H:i:s');
+	$fechaf = $linea['FECHAFIN'];
+	if ($fechaa>$fechaf and $linea['ESTADOPR']=='PRESTADO'){
+		$Pop = true;
+	} else {
+		$Pop = false;
+	}
+	
+}
+
+//if(1) header("#popup1");
+
 ?>
 <html>
     <head>
+		<?php
+			if($Pop) 
+			echo 	"<script>
+									function PopStar(){
+										document.getElementById('PopStarT').click();
+									}
+									window.onload = PopStar;
+						</script>";
+				?>
+			
         <meta charset="UTF-8">
         <title>Classmatebooking</title>
         <link rel="stylesheet" href="../CSS/PRINCIPALCSS.css">
     </head>
+    
     <body>
         <div id="titulo">
             <b><p id="header">Classmatebooking</p>
@@ -113,5 +141,23 @@ $result = $stmt->get_result();
 
         $stmt->close();
     ?>
+    
+    
+    
+    <div id="popup1" class="overlay">
+		<div class="popup">
+			<h2>Califica al usuario</h2>
+			<a class="close" href="#">&times;</a>
+			<div class="content">
+				<input type='radio'><input type='radio'><input type='radio'><input type='radio'><input type='radio'>
+			</div>
+		</div>
+	</div>
+    
+		<!-- Este <a> es importante!  -->
+		<a href="#popup1" id='PopStarT'></a>
+
+	
+    
     </body>
 </html>
