@@ -20,15 +20,48 @@ $prestamos = $stmt->get_result();
 while($linea = mysqli_fetch_array($prestamos)){
 	$fechaa = (new \DateTime())->format('Y-m-d H:i:s');
 	$fechaf = $linea['FECHAFIN'];
-	if ($fechaa>$fechaf and $linea['ESTADOPR']=='PRESTADO'){
-		$Pop = true;
+	
+	if ($fechaa>$fechaf and (is_null($linea['CALIFDUENO']) or is_null($linea['CALIFPREST']))){
+		$IDLP = $linea['ID_L'];
+		$IDUP = $linea['ID_U'];
+		$_SESSION["LibC"] = $IDLP;
+		
+		$stmt = $conn->prepare("SELECT * FROM libros WHERE ID_L=?");
+		$stmt->bind_param("s",$IDLP);
+		$stmt->execute();
+		$LibroP = $stmt->get_result();
+		$LibroP = $LibroP->fetch_object();
+		
+		$stmt = $conn->prepare("SELECT * FROM lib_us WHERE ID_L=?");
+		$stmt->bind_param("s",$IDLP);
+		$stmt->execute();
+		$Dueno = $stmt->get_result();
+		$Dueno = $Dueno->fetch_object();
+		$IDD = $Dueno->ID_U;
+		
+		if($IDU == $IDD){
+			if(is_null($linea['CALIFDUENO'])){
+				$Pop = 1;
+				$_SESSION["Uscal"]=$IDUP;
+			} else {
+				$Pop = 0;
+			}
+		} else if ($IDU == $IDUP){
+			if(is_null($linea['CALIFPREST'])){
+				$Pop = 2;
+				$_SESSION["Uscal"]=$IDD;
+			} else {
+				$Pop = 0;
+			}
+		} else {
+			$Pop = 0;
+		}
+		break;
 	} else {
-		$Pop = false;
+		$Pop = 0;
 	}
 	
 }
-
-//if(1) header("#popup1");
 
 ?>
 <html>
@@ -143,21 +176,54 @@ while($linea = mysqli_fetch_array($prestamos)){
     ?>
     
     
-    
+    <!-- Popup de calificación -->
     <div id="popup1" class="overlay">
 		<div class="popup">
-			<h2>Califica al usuario</h2>
-			<a class="close" href="#">&times;</a>
-			<div class="content">
-				<input type='radio'><input type='radio'><input type='radio'><input type='radio'><input type='radio'>
-			</div>
+			<?php
+				if($Pop==1){
+					$UC = $IDUP;
+					$Cad = 'Le has prestado';
+				} else if ($Pop==2){
+					$UC = $IDD;
+					$Cad = 'Te ha prestado';
+				}else{ 
+					$UC=0;
+				}
+				
+				if($UC){
+					
+					$stmt = $conn->prepare("SELECT * from usuarios WHERE ID_U = ?");
+					$stmt->bind_param("s",$UC);
+					$stmt->execute();
+					$UsuarioC = $stmt->get_result();
+					$UsuarioC = $UsuarioC->fetch_object();
+					$UCN = $UsuarioC->NOMBRE;
+					$UCA1 = $UsuarioC->APELLIDO1;
+					$UCA2 = $UsuarioC->APELLIDO2;
+					
+					echo "
+					<h2>Califica a $UCN $UCA1 $UCA2</h2>
+					<h3>$Cad $LibroP->TITULO<h3>
+					<br>
+					<div class='content'>
+						<form name='calif' action='../PHP/CalifUser.php' method='POST'>
+							<span class='star-rating'>
+								<input type='radio' name='rating' value='1'><i></i>
+								<input type='radio' name='rating' value='2'><i></i>
+								<input type='radio' name='rating' value='3'><i></i>
+								<input type='radio' name='rating' value='4'><i></i>
+								<input type='radio' name='rating' value='5'><i></i>
+							</span>
+							<br><br>
+							<button type='submit' name='Calificar'>Calificar</button>
+						</form>
+					</div>";
+				}
+			?>
 		</div>
 	</div>
     
 		<!-- Este <a> es importante!  -->
 		<a href="#popup1" id='PopStarT'></a>
-
-	
-    
     </body>
 </html>
