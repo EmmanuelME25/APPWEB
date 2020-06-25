@@ -79,5 +79,6 @@
 	<div class='Cuadrado'></div>
 	<div class='Cuadrado1'></div>
 	<h1 class="1">En proceso de aceptación</h1>
+	<div class='Cuadrado2'></div>
 	<h1 class="2">Aceptados</h1>
 </html>
