@@ -21,10 +21,11 @@
     <html>
     <head>
         <link rel="stylesheet" type="text/css" href="../../CSS/pages.css" media="screen"/>
-        <title>Peticiones</title>
+        <title>Préstamos</title>
     </head>
     <body>
         <table>
+            <form name='respuesta' action='../../PHP/ResponderSolicitud.php' method='POST'>
         <?php
             //Mostrar los libros del usuario actual que esten en solicitud
             while($row = mysqli_fetch_array($result)){
@@ -73,10 +74,10 @@
                                             Solicitado por: $NombreUP $AP1UP $AP2UP
                                         </td><td>
                                             Establece una fecha de devolución: <br>
-                                            <input type='Date'>
-                                            <button>Prestar libro</button>
+                                            <input type='date' name='Fecha'><input type='time' name='Hora'>
+                                            <button type='submit' name='Presta' value=$IDL>Prestar libro</button>
                                         </td><td>
-                                            <button>No prestar libro</button>
+                                            <button type='submit' name='NoPresta' value=$IDL>No prestar libro</button>
                                         </td>
                                     ";
                     
@@ -84,6 +85,7 @@
             echo "</tr>";
         }
         ?>
+			</form>
         </table>
     </body>
     </html>

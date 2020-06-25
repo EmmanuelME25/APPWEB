@@ -26,11 +26,6 @@ $result = $stmt->get_result();
         </div>
 
         <header>
-            
-            <div class="contenedor" id="uno">
-                <a href="../PRINCIPAL"><img class="icon" src="IMAGENES_MENU/home.png"></a>
-                <p class="texto">Inicio</p>
-            </div>
 
             <div class="contenedor" id="dos">
                 <a href="SOLICITUDES/"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
@@ -43,7 +38,8 @@ $result = $stmt->get_result();
             </div>
 
             <div class="contenedor" id="cuatro">
-                <a href="PETICIONES/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
+
+                <a href="PRESTAMOS/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
                 <p class="texto">Préstamos</p>
             </div>
 
