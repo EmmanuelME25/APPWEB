@@ -21,7 +21,7 @@ while($linea = mysqli_fetch_array($prestamos)){
 	$fechaa = (new \DateTime())->format('Y-m-d H:i:s');
 	$fechaf = $linea['FECHAFIN'];
 	
-	if ($fechaa>$fechaf and (is_null($linea['CALIFDUENO']) or is_null($linea['CALIFPREST']))){
+	if ($fechaa>$fechaf and (is_null($linea['CALIFDUENO']) or is_null($linea['CALIFPREST'])) and $linea['ESTADOPR']!='CANCELADO' and $linea['ESTADOPR']!='SOLICITADO'){
 		$IDLP = $linea['ID_L'];
 		$IDUP = $linea['ID_U'];
 		$_SESSION["LibC"] = $IDLP;
@@ -38,6 +38,8 @@ while($linea = mysqli_fetch_array($prestamos)){
 		$Dueno = $stmt->get_result();
 		$Dueno = $Dueno->fetch_object();
 		$IDD = $Dueno->ID_U;
+		$_SESSION["IDD"] = $IDD;
+		$_SESSION["IDP"] = $IDUP;
 		
 		if($IDU == $IDD){
 			if(is_null($linea['CALIFDUENO'])){
@@ -175,17 +177,23 @@ while($linea = mysqli_fetch_array($prestamos)){
         $stmt->close();
     ?>
     
+    <?php
+    //<!-- Popup de calificación -->
     
-    <!-- Popup de calificación -->
-    <div id="popup1" class="overlay">
-		<div class="popup">
-			<?php
+    if($Pop){
+    
+		echo "<div id='popup1' class='overlay'>
+						<div class='popup'>";
+	}
+			
 				if($Pop==1){
 					$UC = $IDUP;
 					$Cad = 'Le has prestado';
+					$P=0;
 				} else if ($Pop==2){
 					$UC = $IDD;
 					$Cad = 'Te ha prestado';
+					$P=1;
 				}else{ 
 					$UC=0;
 				}
@@ -208,14 +216,16 @@ while($linea = mysqli_fetch_array($prestamos)){
 					<div class='content'>
 						<form name='calif' action='../PHP/CalifUser.php' method='POST'>
 							<span class='star-rating'>
-								<input type='radio' name='rating' value='1'><i></i>
-								<input type='radio' name='rating' value='2'><i></i>
-								<input type='radio' name='rating' value='3'><i></i>
-								<input type='radio' name='rating' value='4'><i></i>
-								<input type='radio' name='rating' value='5'><i></i>
+								<input type='radio' name='rating' value='1' required><i></i>
+								<input type='radio' name='rating' value='2' required><i></i>
+								<input type='radio' name='rating' value='3' required><i></i>
+								<input type='radio' name='rating' value='4' required><i></i>
+								<input type='radio' name='rating' value='5' required><i></i>
 							</span>
 							<br><br>
-							<button type='submit' name='Calificar'>Calificar</button>
+							<input type='text' name='Comment' placeholder='Deja un comentario!' style='width:75%;'>
+							<br><br>
+							<button type='submit' name='Calificar' value=$P>Calificar</button>
 						</form>
 					</div>";
 				}
