@@ -88,6 +88,60 @@ body {
   transform: rotateY(180deg) translateX(100%);
   cursor: pointer;
 }
+
+
+header{
+	margin-left: 200px;
+    margin-bottom:0px;
+    margin-top:0px;
+    width:100%;
+    height:830px;
+    position:absolute;
+}
+
+div.contenedor{
+    width: 200px;
+    height: 30px;
+    float:left;
+    -webkit-transition: height .4s;
+    text-align: center;
+}
+
+div#dos{
+    background-color: #d1c5a3;
+}
+
+div#tres{
+    background-color: #d1c5a3;
+}
+
+div#cuatro{
+    background-color:#d1c5a3;
+}
+
+div#cinco{
+    background-color: #d1c5a3;
+}
+
+div#seis{
+    background-color:#d1c5a3;
+}
+
+
+p.texto{
+    font-size: 1.2em;
+    color:black;
+    text-align: center;
+    opacity: .6;
+    padding-top:0px;
+    -webkit-transition: padding-top .4s;
+}
+
+div.contenedor:hover{
+background-color: #ffffff;
+}
+
+
 ul {
   margin: 0;
   width: 100%;

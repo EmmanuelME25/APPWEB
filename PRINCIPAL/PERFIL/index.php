@@ -17,6 +17,28 @@
         <link rel="stylesheet" type="text/css" href="CSS/index.css" media="screen"/>
         <title>Mi perfil</title>
     </head>
+<body>
+        <header>
+            
+
+            <div class="contenedor" id="dos">
+                <a href="../SOLICITUDES/">Solicitudes</a>
+            </div>
+
+            <div class="contenedor" id="tres">
+                <a href="../PERFIL/">Pefil</a>
+            </div>
+
+            <div class="contenedor" id="cuatro">
+                <a href="../PETICIONES/">Préstamos</a>
+            </div>
+
+            <div class="contenedor" id="cinco">
+                <a href="../REGISTRARLIBRO/">Registro</a>
+            </div>
+
+        </header>
+		
 <div class="container">
   <div class="card">
     <div class="front">
@@ -51,4 +73,5 @@
     </div>
   </div>
   <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+</body>
 </html>
