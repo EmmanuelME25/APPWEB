@@ -27,28 +27,28 @@ $result = $stmt->get_result();
 
         <header>
            
-            <div class="contenedor" id="dos">
+            <div class="contenedor" id="uno">
                 <a href="SOLICITUDES/"><img class="icon" src="IMAGENES_MENU/logo.png"></a>
                 <p class="texto">Solicitudes</p>
             </div>
 
-            <div class="contenedor" id="tres">
+            <div class="contenedor" id="dos">
                 <a href="PERFIL/"><img class="icon" src="IMAGENES_MENU/perfil.png"></a>
                 <p class="texto">Perfil</p>
             </div>
 
-            <div class="contenedor" id="cuatro">
+            <div class="contenedor" id="tres">
 
                 <a href="PRESTAMOS/"><img class="icon" src="IMAGENES_MENU/prestados.png"></a>
                 <p class="texto">Préstamos</p>
             </div>
 
-            <div class="contenedor" id="cinco">
+            <div class="contenedor" id="cuatro">
                 <a href="REGISTRARLIBRO/"><img class="icon" src="IMAGENES_MENU/registro.png"></a>
                 <p class="texto">Registro</p>
             </div>
 			
-			<div class="contenedor" id="uno">
+			<div class="contenedor" id="cinco">
                 <a href="../"><img class="icon" src="IMAGENES_MENU/cerrar.png"></a>
                 <p class="texto">Cerrar sesión</p>
             </div>

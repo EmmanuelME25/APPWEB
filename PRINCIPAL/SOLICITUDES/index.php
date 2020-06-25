@@ -17,7 +17,7 @@
 <html>
     <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="../../CSS/pages.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="CSS_INDICE/index.css" media="screen"/>
         <title>Solicitudes</title>
     </head>
     <body>
@@ -76,4 +76,8 @@
     </body>
     </html>
     <a href="../" target="_self"><img src="../../IMAGENES/logo.png" class="logoprinc" alt="Logo" width=50 height=50></a>
+	<div class='Cuadrado'></div>
+	<div class='Cuadrado1'></div>
+	<h1 class="1">En proceso de aceptación</h1>
+	<h1 class="2">Aceptados</h1>
 </html>
