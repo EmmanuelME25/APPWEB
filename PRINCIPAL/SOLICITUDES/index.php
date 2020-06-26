@@ -21,7 +21,7 @@
     </head>
     <body>
 		<div id="left">
-			<h1 class="1">En proceso de aceptación</h1><hr>
+			<h1 class="1">Solicitudes</h1><hr>
 			<table>
 					<form name='solicitados' action='../../PHP/CancelarSolicitud.php' method='POST'>
 				<?php
@@ -68,7 +68,7 @@
 													</div>
 												</td><td>
 													<div style='padding: 20; align-content: center; position:relative;'>
-														<button type='submit' name='Libro' value=$IDL'>Cancelar solicitud</button>
+														<button type='submit' name='Libro' value=$IDL>Cancelar solicitud</button>
 													</div>
 												</td>";
 							
@@ -79,7 +79,7 @@
 					</form>
 				</table>
 		</div>
-		<div id="right"><h1 class="2">Aceptados</h1><hr>
+		<div id="right"><h1 class="2">Aceptadas</h1><hr>
 		
 			<table>
 				<?php
@@ -123,7 +123,7 @@
 												<tr><td>
 													<div style='padding: 10; align-content: center;'>
 														<img src=$Imagen height=240 width=135 style='object-fit: cover;'>
-														</td><td>
+														</td><td></div><div style='padding: 10; align-content: center;'>
 														$Titulo
 														<br>
 														Autor: $Autor

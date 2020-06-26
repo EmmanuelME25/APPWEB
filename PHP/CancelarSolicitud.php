@@ -7,7 +7,7 @@
     $OldST = 'SOLICITADO';
     $NewSt = 'CANCELADO';
     $Status = 'DISPONIBLE';
-
+	
     $stmt = $conn->prepare("UPDATE prestamo SET ESTADOPR=? WHERE ID_L=? AND ID_U=? AND ESTADOPR=?");
     $stmt->bind_param('ssss', $NewSt, $IDL, $IDU, $OldST);
     $stmt->execute();

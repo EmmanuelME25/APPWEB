@@ -21,7 +21,7 @@
     </head>
     <body>
 		<div id="left">
-			<h1 class="1">En proceso de aceptación</h1><hr>
+			<h1 class="1">Responder Solicitudes</h1><hr>
 			<table>
 				<form name='respuesta' action='../../PHP/ResponderSolicitud.php' method='POST'>
 			<?php
@@ -88,7 +88,7 @@
         </div>
         
         <div id="right">
-			<h1 class="1">Previamente aceptados</h1><hr>
+			<h1 class="1">Previamente aceptadas</h1><hr>
 			<table>
 				<form name='respuesta' action='../../PHP/ResponderSolicitud.php' method='POST'>
 			<?php
