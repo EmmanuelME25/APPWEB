@@ -99,6 +99,12 @@
 				
 				while($row = mysqli_fetch_array($result)){
 					$IDL = $row['ID_L'];
+					$Cancel = 'CANCELADO';
+					
+					$stmt = $conn->prepare("SELECT * FROM prestamo WHERE ID_L=? AND ESTADOPR!=?");
+					$stmt->bind_param("ss",$IDL, $Cancel);
+					$stmt->execute();
+					$LibroP = $stmt->get_result();
 					
 					//Pedir información del libro
 					$stmt = $conn->prepare("SELECT * FROM libros WHERE ID_L=?");
@@ -107,23 +113,15 @@
 					$Libro = $stmt->get_result();
 					$Libro = $Libro->fetch_object();
 					
-					$Cancel = 'CANCELADO';
-					
-					$stmt = $conn->prepare("SELECT * FROM prestamo WHERE ID_L=? AND ESTADOPR!=?");
-					$stmt->bind_param("ss",$IDL, $Cancel);
-					$stmt->execute();
-					$LibroP = $stmt->get_result();
-					$LibroP = $LibroP->fetch_object();
-					
-					if($LibroP){
-					
-						$YC = $LibroP->COMENTPREST;
+					// Revisar cada instancia que se haya prestado
+					while($linea =mysqli_fetch_array($LibroP)){
+						$YC = $linea['COMENTPREST'];
 						
-						//Si el libro está en solicitud
-						if($LibroP->ESTADOPR=='PRESTADO' || $LibroP->ESTADOPR=='DEVUELTO'){
-							
-							$PEs = $LibroP->ESTADOPR;
-							
+						//Si el libro está o estuvo en solicitud
+						if($linea['ESTADOPR']=='PRESTADO' || $linea['ESTADOPR']=='DEVUELTO'){
+								
+							$PEs = $linea['ESTADOPR'];
+								
 							//Obtener ID del usuario que solicita el libro
 							$stmt = $conn->prepare("SELECT * FROM prestamo WHERE ID_L=?");
 							$stmt->bind_param("s",$IDL);
@@ -131,7 +129,7 @@
 							$IDUP = $stmt->get_result();
 							$IDUP = $IDUP->fetch_object();
 							$IDUP = $IDUP->ID_U;
-							
+								
 							//Obtener información del usuario que solicita el libro
 							$stmt = $conn->prepare("SELECT * FROM usuarios WHERE ID_U=?");
 							$stmt->bind_param("s",$IDUP);
@@ -145,22 +143,21 @@
 							$NombreUP = $UP->NOMBRE;
 							$AP1UP = $UP->APELLIDO1;
 							$AP2UP = $UP->APELLIDO2;
-					
-								echo "  
-												<tr><td><div style='padding: 10; align-content: center;'>
-													<img src=$Imagen height=240 width=135 style='object-fit: cover'>
-												</div></td><td><div style='padding: 10; align-content: center;'>
-													$Titulo
-													<br>
-													Autor: $Autor
-													<br><br>
-													Solicitado por: $NombreUP $AP1UP $AP2UP
-													<br><br>
-													$PEs
-												</div></td><td><div style='padding: 10; align-content: center;'>
-													Comentarios del usuario: <br><i> $YC </i>
-												</div></td>
-											";
+						
+							echo "  
+										<tr><td><div style='padding: 10; align-content: center;'>
+												<img src=$Imagen height=240 width=135 style='object-fit: cover'>
+										</div></td><td><div style='padding: 10; align-content: center;'>
+												$Titulo
+												<br>
+												Autor: $Autor
+												<br><br>
+												Solicitado por: $NombreUP $AP1UP $AP2UP
+												<br><br>
+												$PEs
+										</div></td><td><div style='padding: 10; align-content: center;'>
+												Comentarios del usuario: <br><i> $YC </i>
+										</div></td>";
 							}
 						}
 				echo "</tr>";
