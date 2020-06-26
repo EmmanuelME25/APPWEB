@@ -33,6 +33,14 @@ body {
 	margin-top:70px;
 }
 
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
 h1 {
 	color: #545454;
 	text-transform: uppercase;
